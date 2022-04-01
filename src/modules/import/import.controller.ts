@@ -3,7 +3,7 @@ import { PokemonsService } from 'src/modules/pokemons/pokemons.service';
 import { PokemonEntity } from 'src/database/entities';
 
 @Controller()
-export class PokemonsController {
+export class ImportController {
   constructor(private readonly pokemonsService: PokemonsService) {}
 
   @Post()

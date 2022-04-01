@@ -3,7 +3,7 @@ import { RepoService } from 'src/database/repository';
 import { PokemonEntity } from 'src/database/entities';
 
 @Injectable()
-export class PokemonsService {
+export class ImportService {
   constructor(private readonly repoService: RepoService) {}
 
   getPokemons(): string {
