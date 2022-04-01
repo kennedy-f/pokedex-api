@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { PokemonsService } from 'src/modules/pokemons/pokemons.service';
 import { PokemonEntity } from 'src/database/entities';
 
@@ -9,6 +9,11 @@ export class PokemonsController {
   @Get()
   async findAll(): Promise<PokemonEntity[]> {
     return this.pokemonsService.getAllPokemons();
+  }
+
+  @Get(':id')
+  async findOne(@Param('id') id: number): Promise<PokemonEntity> {
+    return this.pokemonsService.getPokemon(id);
   }
 
   @Post()

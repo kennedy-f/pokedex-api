@@ -9,6 +9,10 @@ export class PokemonsService {
     return await this.repoService.pokemonRepository.find();
   }
 
+  public async getPokemon(id: number): Promise<PokemonEntity> {
+    return await this.repoService.pokemonRepository.findOne(id);
+  }
+
   public async createPokemon(data: PokemonEntity): Promise<PokemonEntity> {
     const pokemon = this.repoService.pokemonRepository.create(data);
     return await this.repoService.pokemonRepository.save(pokemon);
