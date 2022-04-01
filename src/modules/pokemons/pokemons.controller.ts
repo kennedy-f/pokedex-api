@@ -2,7 +2,7 @@ import { Body, Controller, Post } from '@nestjs/common';
 import { PokemonsService } from 'src/modules/pokemons/pokemons.service';
 import { PokemonEntity } from 'src/database/entities';
 
-@Controller()
+@Controller('pokemon')
 export class PokemonsController {
   constructor(private readonly pokemonsService: PokemonsService) {}
 

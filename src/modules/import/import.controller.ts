@@ -1,13 +1,13 @@
-import { Body, Controller, Post } from '@nestjs/common';
-import { PokemonsService } from 'src/modules/pokemons/pokemons.service';
+import { Controller, Get } from '@nestjs/common';
 import { PokemonEntity } from 'src/database/entities';
+import { ImportService } from 'src/modules/import/import.service';
 
-@Controller()
+@Controller('import')
 export class ImportController {
-  constructor(private readonly pokemonsService: PokemonsService) {}
+  constructor(private readonly importService: ImportService) {}
 
-  @Post()
-  create(@Body() createPokemonDto: PokemonEntity): Promise<PokemonEntity> {
-    return this.pokemonsService.createPokemon(createPokemonDto);
+  @Get()
+  create(): Promise<PokemonEntity[]> {
+    return this.importService.importPokemons();
   }
 }

@@ -1,0 +1,32 @@
+export interface PokemonConstants {
+  Row: string;
+  Name: string;
+  pokedex_number: string;
+  img_name: string;
+  Generation: string;
+  evolution_stage: string;
+  Evolved: string;
+  FamilyID: string;
+  cross_gen: string;
+  Type_1: string;
+  Type_2: string;
+  weather_1: string;
+  weather_2: string;
+  stat_total: string;
+  ATK: string;
+  DEF: string;
+  STA: string;
+  Legendary: string;
+  Aquireable: string;
+  Spawns: string;
+  Regional: string;
+  Raidable: string;
+  Hatchable: string;
+  Shiny: string;
+  Nest: string;
+  New: string;
+  'Not-Gettable': string;
+  future_evolve: string;
+  '100cp40': string;
+  '100%CP@39': string;
+}

@@ -6,4 +6,4 @@ import { PokemonsService } from 'src/modules/pokemons/pokemons.service';
   controllers: [PokemonsController],
   providers: [PokemonsService],
 })
-export class AppModule {}
+export class PokemonsModule {}

@@ -6,12 +6,8 @@ import { PokemonEntity } from 'src/database/entities';
 export class PokemonsService {
   constructor(private readonly repoService: RepoService) {}
 
-  getPokemons(): string {
-    return 'Hello World!';
-  }
-
   public async createPokemon(data: PokemonEntity): Promise<PokemonEntity> {
-    const pokemon = this.repoService.pokemonsRepo.create(data);
-    return await this.repoService.pokemonsRepo.save(pokemon);
+    const pokemon = this.repoService.pokemonRepo.create(data);
+    return await this.repoService.pokemonRepo.save(pokemon);
   }
 }

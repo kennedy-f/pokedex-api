@@ -55,19 +55,19 @@ export class PokemonEntity {
   @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
 
-  @ManyToMany(() => TypesEntity)
+  @ManyToMany(() => TypesEntity, { eager: true })
   @JoinTable({
     name: 'pokemon_types',
     joinColumn: { name: 'pokemon_id', referencedColumnName: 'id' },
     inverseJoinColumn: { name: 'type_id', referencedColumnName: 'id' },
   })
-  type: TypesEntity;
+  type: TypesEntity[];
 
-  @ManyToMany(() => WeatherEntity)
+  @ManyToMany(() => WeatherEntity, { eager: true })
   @JoinTable({
     name: 'pokemon_weathers',
     joinColumn: { name: 'pokemon_id', referencedColumnName: 'id' },
     inverseJoinColumn: { name: 'weather_id', referencedColumnName: 'id' },
   })
-  weather: WeatherEntity;
+  weather: WeatherEntity[];
 }
