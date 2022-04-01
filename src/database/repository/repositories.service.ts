@@ -8,7 +8,7 @@ import { PokemonEntity, WeatherEntity, TypesEntity } from '../entities';
 export class RepoService {
   public constructor(
     @InjectRepository(PokemonEntity)
-    public readonly pokemonRepo: Repository<PokemonEntity>,
+    public readonly pokemonRepository: Repository<PokemonEntity>,
     @InjectRepository(WeatherEntity)
     public readonly weatherRepo: Repository<WeatherEntity>,
     @InjectRepository(TypesEntity)

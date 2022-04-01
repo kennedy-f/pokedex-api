@@ -5,9 +5,12 @@ import { PokemonEntity } from 'src/database/entities';
 @Injectable()
 export class PokemonsService {
   constructor(private readonly repoService: RepoService) {}
+  public async getAllPokemons(): Promise<PokemonEntity[]> {
+    return await this.repoService.pokemonRepository.find();
+  }
 
   public async createPokemon(data: PokemonEntity): Promise<PokemonEntity> {
-    const pokemon = this.repoService.pokemonRepo.create(data);
-    return await this.repoService.pokemonRepo.save(pokemon);
+    const pokemon = this.repoService.pokemonRepository.create(data);
+    return await this.repoService.pokemonRepository.save(pokemon);
   }
 }

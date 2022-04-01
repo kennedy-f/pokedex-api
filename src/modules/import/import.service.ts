@@ -33,7 +33,7 @@ export class ImportService {
   public async importPokemons(): Promise<PokemonEntity[]> {
     Logger.log('Importing pokemons...');
     for (const pokemon of PokemonsJsonData as PokemonConstants[]) {
-      const pokemonEntity = await this.repoService.pokemonRepo.findOne({
+      const pokemonEntity = await this.repoService.pokemonRepository.findOne({
         where: { name: pokemon.Name },
       });
       if (pokemonEntity) continue;
@@ -44,7 +44,6 @@ export class ImportService {
         typesEntities.push(await this.createTypes(pokemon.Type_1));
       if (pokemon.Type_2)
         typesEntities.push(await this.createTypes(pokemon.Type_2));
-      console.log('weathers');
 
       const weatherEntities: WeatherEntity[] = [];
       if (pokemon.weather_1)
@@ -53,10 +52,11 @@ export class ImportService {
         weatherEntities.push(await this.createWeather(pokemon.weather_2));
 
       try {
-        await this.repoService.pokemonRepo.save({
+        await this.repoService.pokemonRepository.save({
           name: pokemon.Name,
           def: Number(pokemon.DEF),
           atk: Number(pokemon.ATK),
+          sta: Number(pokemon.STA),
           pokedexNumber: Number(pokemon.pokedex_number),
           stat_total: Number(pokemon.stat_total),
           type: typesEntities,
@@ -67,6 +67,6 @@ export class ImportService {
       }
     }
     Logger.log('Pokemons imported!');
-    return await this.repoService.pokemonRepo.find();
+    return await this.repoService.pokemonRepository.find();
   }
 }
