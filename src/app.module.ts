@@ -10,6 +10,9 @@ import { PokemonsModule } from 'src/modules/pokemons/pokemons.module';
 import { PokemonsController } from 'src/modules/pokemons/pokemons.controller';
 import { ImportService } from 'src/modules/import/import.service';
 import { PokemonsService } from 'src/modules/pokemons/pokemons.service';
+import { TypesModule } from 'src/modules/types/types.module';
+import { TypesService } from 'src/modules/types/types.service';
+import { TypesController } from 'src/modules/types/types.controller';
 
 @Module({
   imports: [
@@ -17,8 +20,14 @@ import { PokemonsService } from 'src/modules/pokemons/pokemons.service';
     RepoModule,
     ImportModule,
     PokemonsModule,
+    TypesModule,
   ],
-  controllers: [AppController, ImportController, PokemonsController],
-  providers: [AppService, ImportService, PokemonsService],
+  controllers: [
+    AppController,
+    ImportController,
+    PokemonsController,
+    TypesController,
+  ],
+  providers: [AppService, ImportService, PokemonsService, TypesService],
 })
 export class AppModule {}

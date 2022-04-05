@@ -17,4 +17,12 @@ export class PokemonsService {
     const pokemon = this.repoService.pokemonRepository.create(data);
     return await this.repoService.pokemonRepository.save(pokemon);
   }
+
+  public async updatePokemon(data: PokemonEntity): Promise<PokemonEntity> {
+    const { type, weather, ...props } = data;
+    await this.repoService.pokemonRepository.update(data.id, {
+      ...props,
+    });
+    return await this.repoService.pokemonRepository.findOne(data.id);
+  }
 }
