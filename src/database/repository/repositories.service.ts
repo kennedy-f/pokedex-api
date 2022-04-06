@@ -18,7 +18,7 @@ export class RepoService {
     public readonly weatherRepo: Repository<WeatherEntity>,
     @InjectRepository(TypesEntity)
     public readonly typesRepo: Repository<TypesEntity>,
-    @InjectRepository(TypesEntity)
+    @InjectRepository(AccessEntity)
     public readonly accessRepository: Repository<AccessEntity>,
   ) {}
 }

@@ -3,7 +3,8 @@ import { AccessService } from 'src/modules/access/access.service';
 import { AccessController } from 'src/modules/access/access.controller';
 
 @Module({
-  imports: [],
+  imports: [AccessModule],
   providers: [AccessService, AccessController],
+  exports: [AccessService],
 })
 export class AccessModule {}
