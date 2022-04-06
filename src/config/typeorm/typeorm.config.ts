@@ -17,7 +17,7 @@ const TypeOrmConfig: TypeOrmModuleOptions = {
   keepConnectionAlive: true,
   maxQueryExecutionTime: 300,
   ssl: Boolean(PostgressConfig.ssl),
-  logging: true,
+  logging: false,
   cli: {
     migrationsDir: migrationsPath,
   },

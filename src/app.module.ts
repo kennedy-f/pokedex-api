@@ -14,11 +14,11 @@ import { AuthModule } from 'src/modules/auth/auth.module';
   imports: [
     TypeOrmModule.forRoot(TypeOrmConfig),
     RepoModule,
+    AuthModule,
     ImportModule,
     PokemonsModule,
     TypesModule,
     AccessModule,
-    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -4,7 +4,8 @@ import { AccessController } from 'src/modules/access/access.controller';
 
 @Module({
   imports: [AccessModule],
-  providers: [AccessService, AccessController],
+  providers: [AccessService],
+  controllers: [AccessController],
   exports: [AccessService],
 })
 export class AccessModule {}

@@ -1,18 +1,24 @@
 import { Injectable } from '@nestjs/common';
 import { AccessService } from 'src/modules/access/access.service';
 import { AccessEntity } from 'src/database/entities';
+import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 
+console.log('initialize');
 @Injectable()
 export class AuthService {
   constructor(
     private accessService: AccessService,
-    private jwtService: JwtService,
+    private readonly jwtService: JwtService,
   ) {}
 
   async validateUser(email: string, password: string): Promise<any> {
-    const access = await this.accessService.findAccess(email);
-    if (access && access.password === password) {
+    const access = await this.accessService.findAccessByEmail(email);
+    if (!access) return null;
+
+    const isValidPassword = await bcrypt.compare(password, access.password);
+
+    if (access && isValidPassword) {
       const { password, ...result } = access;
       return result;
     }
@@ -20,7 +26,6 @@ export class AuthService {
   }
 
   async login(user: AccessEntity) {
-    console.log(user);
     const payload = { username: user.email };
     return {
       access_token: this.jwtService.sign(payload),
